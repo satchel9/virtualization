@@ -1,0 +1,12 @@
+.dockerignore
+.idea
+.runs
+.DS_Store
+*/.DS_Store
+*/.apollo
+pkg/debug*
+build/*
+vendor
+*telepresence*
+debug.sh
+pkg/cmd/server_test
