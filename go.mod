@@ -1,4 +1,4 @@
-module github.com/satchel9/virtualization
+module virtualization
 
 go 1.20
 
