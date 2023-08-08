@@ -17,6 +17,7 @@ limitations under the License.
 package v1
 
 import (
+        "k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -33,6 +34,7 @@ type DiskVolume struct {
 	Status DiskVolumeStatus `json:"status,omitempty"`
 }
 
+
 // DiskRestoreSpec defines the desired state of DiskRestore
 type DiskVolumeSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
@@ -44,12 +46,15 @@ type DiskVolumeSpec struct {
 	AccessMode   string                  `json:"accessMode"`
 }
 
-type DiskVolumeSpecResources struct {
-	Requests DiskVolumeSpecRequests `json:"requests"`
-}
+const (
+	ResourceStorage string = "storage"
+)
 
-type DiskVolumeSpecRequests struct {
-	Storage string `json:"storage"`
+type ResourceList map[string]resource.Quantity
+
+type DiskVolumeSpecResources struct {
+	Limits   ResourceList `json:"limits,omitempty"`
+	Requests ResourceList `json:"requests"`
 }
 
 type DiskVolumeSpecSource struct {
