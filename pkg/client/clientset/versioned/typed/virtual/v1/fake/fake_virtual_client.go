@@ -32,6 +32,14 @@ func (c *FakeVirtualizationV1) DiskRestores(namespace string) v1.DiskRestoreInte
 	return &FakeDiskRestores{c, namespace}
 }
 
+func (c *FakeVirtualizationV1) DiskSnapshots(namespace string) v1.DiskSnapshotInterface {
+	return &FakeDiskSnapshots{c, namespace}
+}
+
+func (c *FakeVirtualizationV1) DiskVolumes(namespace string) v1.DiskVolumeInterface {
+	return &FakeDiskVolumes{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeVirtualizationV1) RESTClient() rest.Interface {

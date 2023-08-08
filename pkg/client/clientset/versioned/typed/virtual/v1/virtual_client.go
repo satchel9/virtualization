@@ -29,6 +29,8 @@ import (
 type VirtualizationV1Interface interface {
 	RESTClient() rest.Interface
 	DiskRestoresGetter
+	DiskSnapshotsGetter
+	DiskVolumesGetter
 }
 
 // VirtualizationV1Client is used to interact with features provided by the virtualization.matrix.io group.
@@ -38,6 +40,14 @@ type VirtualizationV1Client struct {
 
 func (c *VirtualizationV1Client) DiskRestores(namespace string) DiskRestoreInterface {
 	return newDiskRestores(c, namespace)
+}
+
+func (c *VirtualizationV1Client) DiskSnapshots(namespace string) DiskSnapshotInterface {
+	return newDiskSnapshots(c, namespace)
+}
+
+func (c *VirtualizationV1Client) DiskVolumes(namespace string) DiskVolumeInterface {
+	return newDiskVolumes(c, namespace)
 }
 
 // NewForConfig creates a new VirtualizationV1Client for the given config.

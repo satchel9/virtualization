@@ -26,6 +26,10 @@ import (
 type Interface interface {
 	// DiskRestores returns a DiskRestoreInformer.
 	DiskRestores() DiskRestoreInformer
+	// DiskSnapshots returns a DiskSnapshotInformer.
+	DiskSnapshots() DiskSnapshotInformer
+	// DiskVolumes returns a DiskVolumeInformer.
+	DiskVolumes() DiskVolumeInformer
 }
 
 type version struct {
@@ -42,4 +46,14 @@ func New(f internalinterfaces.SharedInformerFactory, namespace string, tweakList
 // DiskRestores returns a DiskRestoreInformer.
 func (v *version) DiskRestores() DiskRestoreInformer {
 	return &diskRestoreInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DiskSnapshots returns a DiskSnapshotInformer.
+func (v *version) DiskSnapshots() DiskSnapshotInformer {
+	return &diskSnapshotInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// DiskVolumes returns a DiskVolumeInformer.
+func (v *version) DiskVolumes() DiskVolumeInformer {
+	return &diskVolumeInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

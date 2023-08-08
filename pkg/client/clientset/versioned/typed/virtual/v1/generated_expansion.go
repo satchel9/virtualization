@@ -19,3 +19,7 @@ limitations under the License.
 package v1
 
 type DiskRestoreExpansion interface{}
+
+type DiskSnapshotExpansion interface{}
+
+type DiskVolumeExpansion interface{}

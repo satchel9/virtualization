@@ -55,6 +55,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=virtualization.matrix.io, Version=v1
 	case v1.SchemeGroupVersion.WithResource("diskrestores"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Virtualization().V1().DiskRestores().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("disksnapshots"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Virtualization().V1().DiskSnapshots().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("diskvolumes"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Virtualization().V1().DiskVolumes().Informer()}, nil
 
 	}
 
