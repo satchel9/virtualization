@@ -33,7 +33,8 @@ type Interface interface {
 	VirtualizationV1() virtualizationv1.VirtualizationV1Interface
 }
 
-// Clientset contains the clients for groups.
+// Clientset contains the clients for groups. Each group has exactly one
+// version included in a Clientset.
 type Clientset struct {
 	*discovery.DiscoveryClient
 	virtualizationV1 *virtualizationv1.VirtualizationV1Client
